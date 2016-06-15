@@ -1,0 +1,43 @@
+{
+  "name": "sweet-config",
+  "version": "0.1.0",
+  "description": "Load configuration, support process env, default value, file module configuration.",
+  "main": "dist/lib.js",
+  "scripts": {
+    "test": "ava | tap-spec",
+    "build": "NODE_ENV=production rollup -f cjs src/lib.js --output dist/lib.js",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/sunfuze/sweet-config.git"
+  },
+  "keywords": [
+    "config",
+    "env"
+  ],
+  "author": "sunfuze <sunfuze.1989@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sunfuze/sweet-config/issues"
+  },
+  "homepage": "https://github.com/sunfuze/sweet-config#readme",
+  "dependencies": {
+    "lodash.property": "^4.3.0",
+    "require-dir": "^0.3.0"
+  },
+  "ava": {
+    "files": [
+      "test/**/*.test.js"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "tap": "tap-spec",
+    "timeout": "5s"
+  },
+  "devDependencies": {
+    "babel-register": "^6.9.0",
+    "tap-spec": "^4.1.1"
+  }
+}
