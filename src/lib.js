@@ -123,13 +123,9 @@ class Config {
   }
 }
 
-function travelObject (obj, target) {
-
-}
-
-function isRequireExt (ext) {
-  return ~require.extensions.indexOf(ext)
-}
+// function isRequireExt (ext) {
+//   return ~require.extensions.indexOf(ext)
+// }
 
 export default {
   load (filepath) {
@@ -140,18 +136,20 @@ export default {
     this._isReady = true
   },
   get (name, defaultValue) {
+    this._check()
     return this._config.get(name, defaultValue)
   },
   set (name, value) {
+    this._check()
     return this._config.set(name, value)
   },
   all () {
+    this._check()
     return this._config.all()
   },
-  get isReady () {
-    return !!this._isReady
-  },
-  _checkLoad () {
-    return !!this._config
+  _check () {
+    if (!this._isReady) {
+      this.load(path.join(process.cwd(), 'config'))
+    }
   }
 }

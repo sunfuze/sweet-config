@@ -2,7 +2,6 @@ import test from 'ava'
 import config from '../src/lib.js'
 
 test('load default path', t => {
-  config.load()
   t.is(config.get('a').value, 1)
   t.is(config.get('a.value'), 1)
   t.is(config.get('b').value, 1)
