@@ -14,6 +14,7 @@ class Config {
   constructor (filepath) {
     if (!filepath) {
       filepath = path.join(parentDir, 'config')
+      console.warn(`Warning: there is no file path provide, using '${filepath}' as default`)
     }
 
     if (filepath.indexOf('.') === 0) {
