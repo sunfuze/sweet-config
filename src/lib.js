@@ -8,7 +8,6 @@ const debug = require('debug')('sweet:config')
 let parent = module.parent
 let parentFile = parent.filename
 let parentDir = path.dirname(parentFile)
-delete require.cache[__filename]
 
 class Config {
   constructor (filepath) {
