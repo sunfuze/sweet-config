@@ -1,3 +1,5 @@
-dist/lib.js
-dist/lib.js.map
+dist
+!dist/.gitkeep
 node_modules/
+coverage/
+.nyc_output/

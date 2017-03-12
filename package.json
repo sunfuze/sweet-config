@@ -1,12 +1,14 @@
 {
   "name": "sweet-config",
-  "version": "0.3.3",
+  "version": "1.0.0",
   "description": "Load configuration, support process env, default value, file module configuration.",
   "main": "dist/lib.js",
   "scripts": {
-    "test": "ava | tap-spec",
-    "build": "NODE_ENV=production rollup -c",
-    "prepublish": "npm run build"
+    "test": "nyc ava | tap-spec",
+    "build": "NODE_ENV=production babel src --out-dir dist",
+    "report": "mkdir -p .nyc_output && nyc report --reporter=html",
+    "prepublish": "npm run build",
+    "pub": "npm publish --registry  https://registry.npmjs.org"
   },
   "repository": {
     "type": "git",
@@ -25,7 +27,7 @@
   "dependencies": {
     "debug": "^2.2.0",
     "lodash.property": "^4.3.0",
-    "require-dir": "^0.3.0"
+    "lodash.set": "^4.3.2"
   },
   "ava": {
     "files": [
@@ -35,13 +37,15 @@
       "babel-register"
     ],
     "tap": "tap-spec",
-    "timeout": "5s"
+    "timeout": "10s"
   },
   "devDependencies": {
-    "babel-preset-es2015-rollup": "^1.1.1",
+    "ava": "^0.18.2",
+    "babel-cli": "^6.23.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.22.0",
     "babel-register": "^6.9.0",
-    "babelrc-rollup": "^1.1.0",
-    "rollup-plugin-babel": "^2.5.1",
+    "nyc": "^10.1.2",
     "tap-spec": "^4.1.1"
   }
 }
